@@ -41,7 +41,6 @@ import math
 import random
 import re
 import weakref
-from utils import *
 import tensorflow as tf
 
 try:
