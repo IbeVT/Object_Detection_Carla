@@ -14,6 +14,7 @@ from __future__ import print_function
 import glob
 import os
 import sys
+import ultralytics
 
 try:
     sys.path.append(glob.glob('../carla/dist/carla-*%d.%d-%s.egg' % (
@@ -750,7 +751,7 @@ class CameraManager(object):
 
 
 #########################################################################################################################################
-############################################################  yolov3 ####################################################################
+############################################################  yolov8 ####################################################################
             test_im = np.array(image.raw_data)
             test_im = test_im.copy()
             test_im = test_im.reshape((image.height, image.width, 4))
@@ -758,11 +759,9 @@ class CameraManager(object):
 
 
             # Load YOLO
-            model_weights = '/Users/44747/CARLA/CARLA_0.9.11/PythonAPI/examples/yolov3.cfg'
-            model_cfg = '/Users/44747/CARLA/CARLA_0.9.11/PythonAPI/examples/yolov3.weights'
+            net = ultralytics.YOLO('best.pt')
             frameWidth= 640
             frameHeight = 480
-            net = cv2.dnn.readNet(model_weights, model_cfg)
 
             classes = []
             with open("coco.names", "r") as f:
