@@ -41,7 +41,6 @@ import math
 import random
 import re
 import weakref
-import tensorflow as tf
 
 try:
     import pygame
