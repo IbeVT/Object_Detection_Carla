@@ -851,8 +851,8 @@ def game_loop(args):
         display = pygame.display.set_mode(
             (args.width, args.height),
             pygame.HWSURFACE | pygame.DOUBLEBUF)
-        print("args.width: " + args.width)
-        print("args.height: " + args.height)
+        print("args.width: " + str(args.width))
+        print("args.height: " + str(args.height))
         hud = HUD(args.width, args.height)
 
         # Changing The Map
