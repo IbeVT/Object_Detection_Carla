@@ -765,18 +765,19 @@ class CameraManager(object):
             with open("coco.names", "r") as f:
                 classes = [line.strip() for line in f.readlines()] # we put the names in to an array
 
-            layers_names = net.getLayerNames()
-            output_layers = [layers_names[i[0] -1] for i in net.getUnconnectedOutLayers()]
-            colors = np.random.uniform(0, 255, size = (len(classes), 3))
-            # Loading image
-            #img = cv2.imread(args.image)
+            # layers_names = net.getLayerNames()
+            # output_layers = [layers_names[i[0] -1] for i in net.getUnconnectedOutLayers()]
+            # colors = np.random.uniform(0, 255, size = (len(classes), 3))
+            # # Loading image
+            # #img = cv2.imread(args.image)
             img = cv2.resize(test_im, (frameWidth, frameHeight), None)
             height, width, channels = img.shape
-            # Detect image
-            blob = cv2.dnn.blobFromImage(img, 1/255, (416, 416), (0, 0, 0), True, crop = False)
-
-            net.setInput(blob)
-            outs = net.forward(output_layers)
+            # # Detect image
+            # blob = cv2.dnn.blobFromImage(img, 1/255, (416, 416), (0, 0, 0), True, crop = False)
+            #
+            # net.setInput(blob)
+            # outs = net.forward(output_layers)
+            outs = net.predict(img)
 
             # Showing informations on the screen
             class_ids = []
